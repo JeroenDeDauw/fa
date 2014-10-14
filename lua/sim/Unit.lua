@@ -4289,8 +4289,13 @@ Unit = Class(moho.unit_methods) {
         }
         return ( self.BuffFields[name](spec) )
     end,
+<<<<<<< HEAD
     
     --Removes engine forced attachment bones for transports
+=======
+    --
+    -- removes engine forced attachment bones for transports
+>>>>>>> 8d2ea1a... WIP cyclic assist invalidation
     RemoveTransportForcedAttachPoints = function(self)
         --This cancels the weird attachment bone manipulations, so transported units attach to the correct positions
         --(probably only useful for custom transport units only). By brute51, this is not a bug fix.

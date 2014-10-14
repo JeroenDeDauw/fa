@@ -11,6 +11,7 @@ local Construction = import('/lua/ui/game/construction.lua')
 local UIMain = import('/lua/ui/uimain.lua')
 local Orders = import('/lua/ui/game/orders.lua')
 local commandMeshResources = import('/lua/ui/game/commandmeshes.lua').commandMeshResources
+local ValidateAssist = import('/lua/ui/game/validateassist.lua')
 
 --[[
  THESE TABLES ARE NOT ACTUALLY USED IN SCRIPT. Just here for reference
@@ -154,6 +155,14 @@ function OnCommandIssued(command)
         import('/modules/reclaimground.lua').ReclaimGround(command)
     end
 
+<<<<<<< HEAD
+=======
+    if command.CommandType == 'Guard' and command.Target.EntityId then
+        local cb = { Func = 'ValidateAssist', Args = { target = command.Target.EntityId } }
+        SimCallback(cb, true)
+    end
+
+>>>>>>> 8d2ea1a... WIP cyclic assist invalidation
     if command.CommandType == 'BuildMobile' then
         AddCommandFeedbackBlip({
             Position = command.Target.Position,

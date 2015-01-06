@@ -54,3 +54,23 @@
 -- function SetHeight(control, height)
 -- function DepthOverParent(control, parent, depth)
 -- function DepthUnderParent(control, parent, depth)
+
+function AtLeftBottomIn(control, parent, leftOffset, bottomOffset)
+    leftOffset = leftOffset or 0
+    bottomOffset = bottomOffset or 0
+    control.Left:Set(function() return math.floor(parent.Left() + (leftOffset * pixelScaleFactor)) end)
+    control.Bottom:Set(function() return math.floor(parent.Bottom() - (bottomOffset * pixelScaleFactor)) end)
+ end
+
+
+function AtRightBottomIn(control, parent, rightOffset, bottomOffset)
+    rightOffset = rightOffset or 0
+    bottomOffset = bottomOffset or 0
+    control.Right:Set(function() return math.floor(parent.Right() - (rightOffset * pixelScaleFactor)) end)
+    control.Bottom:Set(function() return math.floor(parent.Bottom() - (bottomOffset * pixelScaleFactor)) end)
+ end
+
+function DepthSetTopOverParent(control, parent, depth)
+    depth = depth or 1
+    control.Depth:Set(GetFrame(parent:GetRootFrame():GetTargetHead()):GetTopmostDepth() + depth)
+end
